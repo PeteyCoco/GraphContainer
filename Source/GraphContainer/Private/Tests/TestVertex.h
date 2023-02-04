@@ -5,21 +5,14 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "VertexInterface.h"
-#include "DirectedWeightedGraph.generated.h"
+#include "TestVertex.generated.h"
 
 /**
- * 
+ * Vertex class for automation testing
  */
 UCLASS()
-class GRAPHCONTAINER_API UDirectedWeightedGraph : public UObject
+class UTestVertex : public UObject, public IVertexInterface
 {
 	GENERATED_BODY()
-
-public:
-	// Check whether the graph container is empty
-	bool IsEmpty() const
-	{
-		return true;
-	}
 	
 };

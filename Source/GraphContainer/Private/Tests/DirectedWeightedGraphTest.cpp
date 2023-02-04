@@ -1,5 +1,6 @@
 #include "Misc/AutomationTest.h"
 #include "DirectedWeightedGraph.h"
+#include "Tests/TestVertex.h"
 #include "Tests/AutomationEditorCommon.h"
 
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FDirectedWeightedGraph, "Graph Container.Directed Weighted Graph", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
