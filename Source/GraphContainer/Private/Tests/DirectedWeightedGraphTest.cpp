@@ -5,26 +5,20 @@
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FDirectedWeightedGraph, "Graph Container.Directed Weighted Graph", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
 
 bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
-#if 0
-	// Graph is created empty
 	{
 		auto Graph = NewObject<UDirectedWeightedGraph>();
 
 		TestTrue(TEXT("Graph is created empty"), Graph->IsEmpty());
 	}
-
-#endif
 #if 0
-	// Adding node increases the size of the graph to one
 	{
-		DirectedWeightedGraph<TestNode, TestEdge> graph;
+		auto Graph = NewObject<UDirectedWeightedGraph>();
 		TestNode N{};
 
 		graph.AddNode(N);
 
 		TestEqual(TEXT("Graph must contain one node"), graph.NumNodes(), 1);
 	}
-
 	// Adding an edge increases the size of the graph to two
 	{
 		DirectedWeightedGraph<TestNode, TestEdge> graph;
