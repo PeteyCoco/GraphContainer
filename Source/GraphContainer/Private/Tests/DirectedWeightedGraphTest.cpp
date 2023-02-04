@@ -11,15 +11,17 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 
 		TestTrue(TEXT("Graph is created empty"), Graph->IsEmpty());
 	}
-#if 0
+
 	{
 		auto Graph = NewObject<UDirectedWeightedGraph>();
-		TestNode N{};
+		auto Vertex = NewObject<UTestVertex>();
 
-		graph.AddNode(N);
+		Graph->AddVertex(Vertex);
 
-		TestEqual(TEXT("Graph must contain one node"), graph.NumNodes(), 1);
+		TestEqual(TEXT("Graph must contain one node"), Graph->NumVertices(), 1);
 	}
+#if 0
+
 	// Adding an edge increases the size of the graph to two
 	{
 		DirectedWeightedGraph<TestNode, TestEdge> graph;

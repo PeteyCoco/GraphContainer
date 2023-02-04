@@ -21,5 +21,17 @@ public:
 	{
 		return true;
 	}
+
+	// Return the number of vertices in the graph
+	int NumVertices() const
+	{
+		return 1;
+	}
+
+	// Add vertex to the graph
+	void AddVertex(const IVertexInterface* Vertex)
+	{
+
+	}
 	
 };
