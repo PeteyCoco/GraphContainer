@@ -1,6 +1,7 @@
 #include "Misc/AutomationTest.h"
 #include "DirectedWeightedGraph.h"
 #include "Tests/TestVertex.h"
+#include "Tests/TestEdge.h"
 #include "Tests/AutomationEditorCommon.h"
 
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FDirectedWeightedGraph, "Graph Container.Directed Weighted Graph", EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
@@ -20,19 +21,19 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 
 		TestEqual(TEXT("Graph must contain one node"), Graph->NumVertices(), 1);
 	}
-#if 0
 
 	{
 		auto Graph = NewObject<UDirectedWeightedGraph>();
-		auto V1 = NewObject<UTestVertex>();
-		auto V2 = NewObject<UTestVertex>();
+		auto Origin = NewObject<UTestVertex>();
+		auto Destination = NewObject<UTestVertex>();
 		auto Edge = NewObject<UTestEdge>();
 
-		Graph->AddEdge(E, V1, V2);
+		Graph->AddEdge(Edge, Origin, Destination);
 
-		TestEqual(TEXT("Graph must contain two nodes"), Graph->NumNodes(), 2);
+		TestEqual(TEXT("Graph must contain two nodes"), Graph->NumVertices(), 2);
 		TestEqual(TEXT("Graph must contain one edge"), Graph->NumEdges(), 1);
 	}
+#if 0
 	// Graph must contain the node added to the graph
 	{
 		DirectedWeightedGraph<TestNode, TestEdge> graph;

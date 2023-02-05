@@ -11,7 +11,7 @@
  * Edge class for automation testing
  */
 UCLASS()
-class UTestEdge : public UObject
+class UTestEdge : public UObject, public IEdgeInterface
 {
 	GENERATED_BODY()
 	
