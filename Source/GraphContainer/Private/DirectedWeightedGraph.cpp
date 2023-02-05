@@ -7,3 +7,8 @@ void UDirectedWeightedGraph::AddVertex(const VertexPtr Vertex)
 {
 		boost::add_vertex(Vertex, graph);
 }
+
+bool UDirectedWeightedGraph::HasVertex(const VertexPtr Vertex)
+{
+	return true;
+}

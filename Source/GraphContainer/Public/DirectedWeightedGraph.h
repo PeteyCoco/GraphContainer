@@ -50,6 +50,9 @@ public:
 		AddVertex(Destination);
 	}
 
+	// Check whether the graph contains the given vertex
+	bool HasVertex(const VertexPtr Vertex);
+
 private:
 	GraphType graph{};
 };
