@@ -18,7 +18,7 @@ class GRAPHCONTAINER_API UDirectedWeightedGraph : public UObject
 	GENERATED_BODY()
 private:
 	typedef IVertexInterface*const VertexPtr;
-	typedef IEdgeInterface* const EdgePtr;
+	typedef IEdgeInterface*const EdgePtr;
 	typedef boost::adjacency_list<boost::vecS, boost::vecS, boost::directedS, VertexPtr, EdgePtr> GraphType;
 
 public:
@@ -44,7 +44,7 @@ public:
 	void AddVertex(const VertexPtr & Vertex);
 
 	// Add Edge to the graph
-	void AddEdge(const EdgePtr* Edge, const VertexPtr& Origin, const VertexPtr& Destination)
+	void AddEdge(const EdgePtr& Edge, const VertexPtr& Origin, const VertexPtr& Destination)
 	{
 		AddVertex(Origin);
 		AddVertex(Destination);
