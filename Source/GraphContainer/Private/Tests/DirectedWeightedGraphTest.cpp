@@ -125,6 +125,20 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		TestEqual(TEXT("NumEdges() is zero after calling AddEdge() with nullptr argument(s)"), Graph->NumEdges(), 0);
 	}
 
+	{
+		auto Graph = NewObject<UDirectedWeightedGraph>();
+		auto V1 = NewObject<UTestVertex>();
+		auto V2 = NewObject<UTestVertex>();
+		auto V3 = NewObject<UTestVertex>();
+		auto E1 = NewObject<UTestEdge>();
+		auto E2 = NewObject<UTestEdge>();
+
+		Graph->AddEdge(E1, V1, V2);
+		Graph->AddEdge(E2, V2, V3);
+
+		TestEqual(TEXT("Graph of two coincident edges has three verrtices"), Graph->NumVertices(), 3);
+	}
+
 #if 0
 	// Graph does not contain edge not in graph
 	{

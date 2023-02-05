@@ -25,9 +25,9 @@ void UDirectedWeightedGraph::AddEdge(const EdgePtr Edge, const VertexPtr Origin,
 	}
 	else if (!HasEdge(Edge))
 	{
-		const auto vdo = boost::add_vertex(Origin, graph);
-		const auto vdd = boost::add_vertex(Destination, graph);
-		const auto aer = boost::add_edge(vdo, vdd, graph);
+		AddVertex(Origin);
+		AddVertex(Destination);
+		const auto aer = boost::add_edge(vertex_descriptor_map[Origin], vertex_descriptor_map[Destination], graph);
 		edge_descriptor_map.Add(Edge, aer.first);
 	}
 	else
