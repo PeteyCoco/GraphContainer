@@ -24,6 +24,15 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 
 	{
 		auto Graph = NewObject<UDirectedWeightedGraph>();
+
+		AddExpectedError(TEXT("Tried to add nullptr vertex to graph. No action taken."), EAutomationExpectedErrorFlags::Exact, 1);
+		Graph->AddVertex(nullptr);
+
+		TestEqual(TEXT("Adding nullptr to graph does nothing"), Graph->NumVertices(), 0);
+	}
+
+	{
+		auto Graph = NewObject<UDirectedWeightedGraph>();
 		auto Origin = NewObject<UTestVertex>();
 		auto Destination = NewObject<UTestVertex>();
 		auto Edge = NewObject<UTestEdge>();

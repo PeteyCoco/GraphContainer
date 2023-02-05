@@ -5,6 +5,11 @@
 
 void UDirectedWeightedGraph::AddVertex(const VertexPtr Vertex)
 {
+	if (!Vertex)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Tried to add nullptr vertex to graph. No action taken."));
+		return;
+	}
 	if(!HasVertex(Vertex))
 		boost::add_vertex(Vertex, graph);
 }
