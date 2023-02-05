@@ -37,10 +37,10 @@ public:
 	}
 
 	// Add vertex to the graph
-	void AddVertex(IVertexInterface* Vertex);
+	void AddVertex(IVertexInterface* const Vertex);
 
 	// Add Edge to the graph
-	void AddEdge(const IEdgeInterface* Edge, IVertexInterface* Origin, IVertexInterface* Destination)
+	void AddEdge(const IEdgeInterface* Edge, IVertexInterface* const Origin, IVertexInterface* const Destination)
 	{
 		AddVertex(Origin);
 		AddVertex(Destination);
