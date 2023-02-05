@@ -10,5 +10,11 @@ void UDirectedWeightedGraph::AddVertex(const VertexPtr Vertex)
 
 bool UDirectedWeightedGraph::HasVertex(const VertexPtr Vertex)
 {
-	return true;
+	const auto vip = vertices(graph);
+	for (auto iter = vip.first; iter != vip.second; ++iter)
+	{
+		if (graph[*iter] == Vertex)
+			return true;
+	}
+	return false;
 }

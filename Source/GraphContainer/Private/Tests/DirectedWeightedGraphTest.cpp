@@ -42,18 +42,14 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 
 		TestTrue(TEXT("Graph must contain the vertex added to the graph"), Graph->HasVertex(Vertex));
 	}
-#if 0
-	// Graph must not contain an unadded node
+
 	{
-		DirectedWeightedGraph<TestNode, TestEdge> graph;
-		TestNode N1{0};
-		TestNode N2{100};
+		auto Graph = NewObject<UDirectedWeightedGraph>();
+		auto Vertex = NewObject<UTestVertex>();
 
-		graph.AddNode(N1);
-
-		TestFalse(TEXT("Graph must not contain node not present in graph"), graph.HasNode(N2));
+		TestFalse(TEXT("Graph must not contain node not present in graph"), Graph->HasVertex(Vertex));
 	}
-
+#if 0
 	// Cannot add the same node twice
 	{
 		DirectedWeightedGraph<TestNode, TestEdge> graph;
