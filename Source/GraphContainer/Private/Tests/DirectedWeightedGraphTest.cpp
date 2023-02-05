@@ -100,6 +100,19 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		TestFalse(TEXT("Graph doesn't contain an edge not added to the graph"), Graph->HasEdge(Edge));
 	}
 
+	{
+		auto Graph = NewObject<UDirectedWeightedGraph>();
+		auto V1 = NewObject<UTestVertex>();
+		auto V2 = NewObject<UTestVertex>();
+		auto Edge = NewObject<UTestEdge>();
+
+		Graph->AddEdge(Edge, V1, V2);
+		AddExpectedError(TEXT("Tried to add a pre-existing edge to graph. No action taken."), EAutomationExpectedErrorFlags::Exact, 1);
+		Graph->AddEdge(Edge, V2, V1);
+
+		TestEqual(TEXT("Number of edges remains one after adding the same edge twice"), Graph->NumEdges(), 1);
+	}
+
 #if 0
 	// Graph does not contain edge not in graph
 	{

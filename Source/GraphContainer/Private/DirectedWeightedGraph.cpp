@@ -19,11 +19,19 @@ void UDirectedWeightedGraph::AddVertex(const VertexPtr Vertex)
 
 void UDirectedWeightedGraph::AddEdge(const EdgePtr Edge, const VertexPtr Origin, const VertexPtr Destination)
 {
-	const auto vdo = boost::add_vertex(Origin, graph);
-	const auto vdd = boost::add_vertex(Destination, graph);
-	const auto aer = boost::add_edge(vdo, vdd, graph);
+	if (!HasEdge(Edge))
+	{
+		const auto vdo = boost::add_vertex(Origin, graph);
+		const auto vdd = boost::add_vertex(Destination, graph);
+		const auto aer = boost::add_edge(vdo, vdd, graph);
 
-	edge_descriptor_map.Add(Edge, aer.first);
+		edge_descriptor_map.Add(Edge, aer.first);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Tried to add a pre-existing edge to graph. No action taken."));
+	}
+
 }
 
 bool UDirectedWeightedGraph::HasVertex(const VertexPtr Vertex)
