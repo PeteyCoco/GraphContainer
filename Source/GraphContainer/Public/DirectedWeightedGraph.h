@@ -17,7 +17,7 @@ class GRAPHCONTAINER_API UDirectedWeightedGraph : public UObject
 {
 	GENERATED_BODY()
 private:
-	typedef IVertexInterface* VertexPtr;
+	typedef IVertexInterface*const VertexPtr;
 	typedef boost::adjacency_list<boost::vecS, boost::vecS, boost::directedS, VertexPtr, IEdgeInterface*> GraphType;
 
 public:
