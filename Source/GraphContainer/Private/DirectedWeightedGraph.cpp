@@ -10,8 +10,11 @@ void UDirectedWeightedGraph::AddVertex(const VertexPtr Vertex)
 		UE_LOG(LogTemp, Warning, TEXT("Tried to add nullptr vertex to graph. No action taken."));
 		return;
 	}
-	if(!HasVertex(Vertex))
-		boost::add_vertex(Vertex, graph);
+	if (!HasVertex(Vertex))
+	{
+		const auto vd = boost::add_vertex(Vertex, graph);
+		vertex_descriptor_map.Add(Vertex, vd);
+	}
 }
 
 void UDirectedWeightedGraph::AddEdge(const EdgePtr Edge, const VertexPtr Origin, const VertexPtr Destination)
@@ -22,13 +25,7 @@ void UDirectedWeightedGraph::AddEdge(const EdgePtr Edge, const VertexPtr Origin,
 
 bool UDirectedWeightedGraph::HasVertex(const VertexPtr Vertex)
 {
-	const auto vip = vertices(graph);
-	for (auto iter = vip.first; iter != vip.second; ++iter)
-	{
-		if (graph[*iter] == Vertex)
-			return true;
-	}
-	return false;
+	return vertex_descriptor_map.Contains(Vertex);
 }
 
 bool UDirectedWeightedGraph::HasEdge(const EdgePtr Edge)

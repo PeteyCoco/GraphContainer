@@ -54,4 +54,6 @@ public:
 
 private:
 	GraphType graph{};
+
+	TMap<VertexPtr, GraphType::vertex_descriptor> vertex_descriptor_map;
 };
