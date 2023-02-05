@@ -41,10 +41,10 @@ public:
 	}
 
 	// Add vertex to the graph
-	void AddVertex(const VertexPtr & Vertex);
+	void AddVertex(const VertexPtr Vertex);
 
 	// Add Edge to the graph
-	void AddEdge(const EdgePtr& Edge, const VertexPtr& Origin, const VertexPtr& Destination)
+	void AddEdge(const EdgePtr Edge, const VertexPtr Origin, const VertexPtr Destination)
 	{
 		AddVertex(Origin);
 		AddVertex(Destination);

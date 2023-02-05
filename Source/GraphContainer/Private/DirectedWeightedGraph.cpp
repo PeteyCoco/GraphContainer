@@ -3,7 +3,7 @@
 
 #include "DirectedWeightedGraph.h"
 
-void UDirectedWeightedGraph::AddVertex(const VertexPtr& Vertex)
+void UDirectedWeightedGraph::AddVertex(const VertexPtr Vertex)
 {
 		boost::add_vertex(Vertex, graph);
 }
