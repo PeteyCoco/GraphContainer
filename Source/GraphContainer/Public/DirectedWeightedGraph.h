@@ -44,11 +44,7 @@ public:
 	void AddVertex(const VertexPtr Vertex);
 
 	// Add Edge to the graph
-	void AddEdge(const EdgePtr Edge, const VertexPtr Origin, const VertexPtr Destination)
-	{
-		AddVertex(Origin);
-		AddVertex(Destination);
-	}
+	void AddEdge(const EdgePtr Edge, const VertexPtr Origin, const VertexPtr Destination);
 
 	// Check whether the graph contains the given vertex
 	bool HasVertex(const VertexPtr Vertex);
