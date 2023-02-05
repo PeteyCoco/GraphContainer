@@ -22,19 +22,17 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 	}
 #if 0
 
-	// Adding an edge increases the size of the graph to two
 	{
-		DirectedWeightedGraph<TestNode, TestEdge> graph;
-		TestNode N1{1};
-		TestNode N2{2};
-		TestEdge E{};
+		auto Graph = NewObject<UDirectedWeightedGraph>();
+		auto V1 = NewObject<UTestVertex>();
+		auto V2 = NewObject<UTestVertex>();
+		auto Edge = NewObject<UTestEdge>();
 
-		graph.AddEdge(E, N1, N2);
+		Graph->AddEdge(E, V1, V2);
 
-		TestEqual(TEXT("Graph must contain two nodes"), graph.NumNodes(), 2);
-		TestEqual(TEXT("Graph must contain one edge"), graph.NumEdges(), 1);
+		TestEqual(TEXT("Graph must contain two nodes"), Graph->NumNodes(), 2);
+		TestEqual(TEXT("Graph must contain one edge"), Graph->NumEdges(), 1);
 	}
-
 	// Graph must contain the node added to the graph
 	{
 		DirectedWeightedGraph<TestNode, TestEdge> graph;
