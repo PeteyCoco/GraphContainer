@@ -16,6 +16,8 @@ UCLASS()
 class GRAPHCONTAINER_API UDirectedWeightedGraph : public UObject
 {
 	GENERATED_BODY()
+private:
+	typedef IVertexInterface* VertexPtr;
 
 public:
 	// Check whether the graph container is empty
@@ -37,15 +39,15 @@ public:
 	}
 
 	// Add vertex to the graph
-	void AddVertex(IVertexInterface* const Vertex);
+	void AddVertex(const VertexPtr & Vertex);
 
 	// Add Edge to the graph
-	void AddEdge(const IEdgeInterface* Edge, IVertexInterface* const Origin, IVertexInterface* const Destination)
+	void AddEdge(const IEdgeInterface* Edge, const VertexPtr& Origin, const VertexPtr& Destination)
 	{
 		AddVertex(Origin);
 		AddVertex(Destination);
 	}
 
 private:
-	boost::adjacency_list<boost::vecS, boost::vecS, boost::directedS, IVertexInterface*, IEdgeInterface*> graph{};
+	boost::adjacency_list<boost::vecS, boost::vecS, boost::directedS, VertexPtr, IEdgeInterface*> graph{};
 };
