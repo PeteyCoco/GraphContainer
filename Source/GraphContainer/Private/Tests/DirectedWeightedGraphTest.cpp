@@ -30,7 +30,7 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 
 		Graph->AddEdge(Edge, Origin, Destination);
 
-		TestEqual(TEXT("Graph must contain two nodes"), Graph->NumVertices(), 2);
+		TestEqual(TEXT("Graph must contain two vertices"), Graph->NumVertices(), 2);
 		TestEqual(TEXT("Graph must contain one edge"), Graph->NumEdges(), 1);
 	}
 #if 0
