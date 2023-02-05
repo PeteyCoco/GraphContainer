@@ -79,6 +79,7 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 
 		TestTrue(TEXT("Graph must contain the edge added to the graph"), Graph->HasEdge(Edge));
 	}
+
 #if 0
 	// Graph does not contain edge not in graph
 	{
