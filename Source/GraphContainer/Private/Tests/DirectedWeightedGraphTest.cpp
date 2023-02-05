@@ -49,18 +49,17 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 
 		TestFalse(TEXT("Graph must not contain vertex not present in graph"), Graph->HasVertex(Vertex));
 	}
-#if 0
-	// Cannot add the same node twice
+
 	{
-		DirectedWeightedGraph<TestNode, TestEdge> graph;
-		TestNode N1{ 100 };
+		auto Graph = NewObject<UDirectedWeightedGraph>();
+		auto Vertex = NewObject<UTestVertex>();
 
-		graph.AddNode(N1);
-		graph.AddNode(N1);
+		Graph->AddVertex(Vertex);
+		Graph->AddVertex(Vertex);
 
-		TestEqual(TEXT("Adding node with same ID twice does nothing"), graph.NumNodes(), 1);
+		TestEqual(TEXT("Adding the same vertex twice does nothing"), Graph->NumVertices(), 1);
 	}
-
+#if 0
 	// Graph must contain the edge added to the graph
 	{
 		DirectedWeightedGraph<TestNode, TestEdge> graph;

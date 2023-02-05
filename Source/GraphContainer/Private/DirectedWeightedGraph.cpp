@@ -5,6 +5,7 @@
 
 void UDirectedWeightedGraph::AddVertex(const VertexPtr Vertex)
 {
+	if(!HasVertex(Vertex))
 		boost::add_vertex(Vertex, graph);
 }
 
