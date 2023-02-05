@@ -19,7 +19,11 @@ void UDirectedWeightedGraph::AddVertex(const VertexPtr Vertex)
 
 void UDirectedWeightedGraph::AddEdge(const EdgePtr Edge, const VertexPtr Origin, const VertexPtr Destination)
 {
-	if (!HasEdge(Edge))
+	if (!Edge || !Origin || !Destination)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("One of Edge, Origin, or Vertex are nullptr. No action taken."));
+	}
+	else if (!HasEdge(Edge))
 	{
 		const auto vdo = boost::add_vertex(Origin, graph);
 		const auto vdd = boost::add_vertex(Destination, graph);

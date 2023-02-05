@@ -113,6 +113,18 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		TestEqual(TEXT("Number of edges remains one after adding the same edge twice"), Graph->NumEdges(), 1);
 	}
 
+	{
+		auto Graph = NewObject<UDirectedWeightedGraph>();
+		auto V1 = NewObject<UTestVertex>();
+		auto V2 = NewObject<UTestVertex>();
+		auto Edge = NewObject<UTestEdge>();
+
+		AddExpectedError(TEXT("One of Edge, Origin, or Vertex are nullptr. No action taken."), EAutomationExpectedErrorFlags::Exact, 1);
+		Graph->AddEdge(nullptr, V2, nullptr);
+
+		TestEqual(TEXT("NumEdges() is zero after calling AddEdge() with nullptr argument(s)"), Graph->NumEdges(), 0);
+	}
+
 #if 0
 	// Graph does not contain edge not in graph
 	{
