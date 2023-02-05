@@ -49,6 +49,9 @@ public:
 	// Check whether the graph contains the given vertex
 	bool HasVertex(const VertexPtr Vertex);
 
+	// Check whether the graph contains the given edge
+	bool HasEdge(const EdgePtr Edge);
+
 private:
 	GraphType graph{};
 };

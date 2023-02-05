@@ -30,3 +30,8 @@ bool UDirectedWeightedGraph::HasVertex(const VertexPtr Vertex)
 	}
 	return false;
 }
+
+bool UDirectedWeightedGraph::HasEdge(const EdgePtr Edge)
+{
+	return true;
+}

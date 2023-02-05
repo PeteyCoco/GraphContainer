@@ -68,19 +68,18 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 
 		TestEqual(TEXT("Adding the same vertex twice does nothing"), Graph->NumVertices(), 1);
 	}
-#if 0
-	// Graph must contain the edge added to the graph
+
 	{
-		DirectedWeightedGraph<TestNode, TestEdge> graph;
-		TestNode N1{ 0 };
-		TestNode N2{ 1 };
-		TestEdge E{ 0 };
+		auto Graph = NewObject<UDirectedWeightedGraph>();
+		auto Origin = NewObject<UTestVertex>();
+		auto Destination = NewObject<UTestVertex>();
+		auto Edge = NewObject<UTestEdge>();
 
-		graph.AddEdge(E, N1, N2);
+		Graph->AddEdge(Edge, Origin, Destination);
 
-		TestTrue(TEXT("Graph must contain the edge added to the graph"), graph.HasEdge(E));
+		TestTrue(TEXT("Graph must contain the edge added to the graph"), Graph->HasEdge(Edge));
 	}
-
+#if 0
 	// Graph does not contain edge not in graph
 	{
 		DirectedWeightedGraph<TestNode, TestEdge> graph;
