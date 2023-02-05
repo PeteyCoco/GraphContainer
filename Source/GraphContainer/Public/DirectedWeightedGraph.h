@@ -17,8 +17,8 @@ class GRAPHCONTAINER_API UDirectedWeightedGraph : public UObject
 {
 	GENERATED_BODY()
 private:
-	typedef IVertexInterface*const VertexPtr;
-	typedef IEdgeInterface*const EdgePtr;
+	typedef IVertexInterface* VertexPtr;
+	typedef IEdgeInterface* EdgePtr;
 	typedef boost::adjacency_list<boost::vecS, boost::vecS, boost::directedS, VertexPtr, EdgePtr> GraphType;
 	typedef boost::graph_traits<GraphType>::vertex_descriptor VertexDescriptor;
 
@@ -38,7 +38,7 @@ public:
 	// Return the number of vertices in the graph
 	int NumEdges() const
 	{
-		return 1;
+		return boost::num_edges(graph);
 	}
 
 	// Add vertex to the graph

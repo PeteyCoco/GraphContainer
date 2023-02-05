@@ -19,8 +19,9 @@ void UDirectedWeightedGraph::AddVertex(const VertexPtr Vertex)
 
 void UDirectedWeightedGraph::AddEdge(const EdgePtr Edge, const VertexPtr Origin, const VertexPtr Destination)
 {
-	AddVertex(Origin);
-	AddVertex(Destination);
+	const auto vdo = boost::add_vertex(Origin, graph);
+	const auto vdd = boost::add_vertex(Destination, graph);
+	const auto aer = boost::add_edge(vdo, vdd, graph);
 }
 
 bool UDirectedWeightedGraph::HasVertex(const VertexPtr Vertex)
