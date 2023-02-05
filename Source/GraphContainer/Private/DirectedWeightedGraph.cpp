@@ -8,6 +8,12 @@ void UDirectedWeightedGraph::AddVertex(const VertexPtr Vertex)
 		boost::add_vertex(Vertex, graph);
 }
 
+void UDirectedWeightedGraph::AddEdge(const EdgePtr Edge, const VertexPtr Origin, const VertexPtr Destination)
+{
+	AddVertex(Origin);
+	AddVertex(Destination);
+}
+
 bool UDirectedWeightedGraph::HasVertex(const VertexPtr Vertex)
 {
 	const auto vip = vertices(graph);
