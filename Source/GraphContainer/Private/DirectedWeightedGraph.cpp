@@ -22,6 +22,8 @@ void UDirectedWeightedGraph::AddEdge(const EdgePtr Edge, const VertexPtr Origin,
 	const auto vdo = boost::add_vertex(Origin, graph);
 	const auto vdd = boost::add_vertex(Destination, graph);
 	const auto aer = boost::add_edge(vdo, vdd, graph);
+
+	edge_descriptor_map.Add(Edge, aer.first);
 }
 
 bool UDirectedWeightedGraph::HasVertex(const VertexPtr Vertex)
@@ -31,5 +33,5 @@ bool UDirectedWeightedGraph::HasVertex(const VertexPtr Vertex)
 
 bool UDirectedWeightedGraph::HasEdge(const EdgePtr Edge)
 {
-	return true;
+	return edge_descriptor_map.Contains(Edge);
 }

@@ -21,6 +21,7 @@ private:
 	typedef IEdgeInterface* EdgePtr;
 	typedef boost::adjacency_list<boost::vecS, boost::vecS, boost::directedS, VertexPtr, EdgePtr> GraphType;
 	typedef boost::graph_traits<GraphType>::vertex_descriptor VertexDescriptor;
+	typedef boost::graph_traits<GraphType>::edge_descriptor EdgeDescriptor;
 
 public:
 	// Check whether the graph container is empty
@@ -57,4 +58,7 @@ private:
 	GraphType graph{};
 
 	TMap<VertexPtr, VertexDescriptor> vertex_descriptor_map;
+
+	TMap<EdgePtr, EdgeDescriptor> edge_descriptor_map;
+
 };

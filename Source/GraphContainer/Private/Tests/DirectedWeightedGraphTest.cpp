@@ -93,6 +93,13 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		TestEqual(TEXT("Graph must contain two edges"), Graph->NumEdges(), 2);
 	}
 
+	{
+		auto Graph = NewObject<UDirectedWeightedGraph>();
+		auto Edge = NewObject<UTestEdge>();
+
+		TestFalse(TEXT("Graph doesn't contain an edge not added to the graph"), Graph->HasEdge(Edge));
+	}
+
 #if 0
 	// Graph does not contain edge not in graph
 	{
