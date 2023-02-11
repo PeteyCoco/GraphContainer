@@ -48,6 +48,5 @@ bool UDirectedWeightedGraph::HasEdge(const EdgePtr Edge)
 
 IVertexInterface* UDirectedWeightedGraph::Origin(const EdgePtr Edge)
 {
-	const auto ed = boost::source(edge_descriptor_map[Edge], graph);
-	return graph[ed];
+	return graph[boost::source(edge_descriptor_map[Edge], graph)];
 }
