@@ -54,6 +54,9 @@ public:
 	// Check whether the graph contains the given edge
 	bool HasEdge(const EdgePtr Edge);
 
+	// Get the origin vertex of a given edge
+	IVertexInterface* Origin(const EdgePtr Edge);
+
 private:
 	GraphType graph{};
 

@@ -139,60 +139,17 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		TestEqual(TEXT("Graph of two coincident edges has three vertices"), Graph->NumVertices(), 3);
 	}
 
+	{
+		auto Graph = NewObject<UDirectedWeightedGraph>();
+		auto Origin = NewObject<UTestVertex>();
+		auto Destination = NewObject<UTestVertex>();
+		auto Edge = NewObject<UTestEdge>();
+
+		Graph->AddEdge(Edge, Origin, Destination);
+
+		TestTrue(TEXT("The origin vertex of a directed edge matches the vertex used in its construction"), Graph->Origin(Edge) == Origin);
+	}
 #if 0
-	// Graph does not contain edge not in graph
-	{
-		DirectedWeightedGraph<TestNode, TestEdge> graph;
-		TestNode N1{ 0 };
-		TestNode N2{ 1 };
-		TestEdge E1{ 0 };
-		TestEdge E2{ 1 };
-
-		graph.AddEdge(E1, N1, N2);
-
-		TestFalse(TEXT("Graph must not contain an edge not in graph"), graph.HasEdge(E2));
-	}
-
-	// Cannot add the same node twice
-	{
-		DirectedWeightedGraph<TestNode, TestEdge> graph;
-		TestNode N1{ 1 };
-		TestNode N2{ 2 };
-		TestNode N3{ 3 };
-		TestEdge E{ 1 };
-
-		graph.AddEdge(E, N1, N2);
-		graph.AddEdge(E, N2, N3);
-
-		TestEqual(TEXT("Adding edge with same ID twice does nothing"), graph.NumEdges(), 1);
-	}
-
-	// Adding two coincident edges yields a graph with 3 nodes and two edges
-	{
-		DirectedWeightedGraph<TestNode, TestEdge> graph;
-		TestNode N1{ 1 };
-		TestNode N2{ 2 };
-		TestNode N3{ 3 };
-		TestEdge E1{ 1 };
-		TestEdge E2{ 2 };
-
-		graph.AddEdge(E1, N1, N2);
-		graph.AddEdge(E2, N2, N3);
-
-		TestEqual(TEXT("Adding two coincident edges yields 3 nodes in graph"), graph.NumNodes(), 3);
-	}
-
-	// FGraphAStar interface tests
-	{
-		DirectedWeightedGraph<TestNode, TestEdge> graph;
-		TestNode N1{ 1 };
-
-		graph.AddNode(N1);
-
-		TestTrue(TEXT("IsValidRef() is true when node is in graph"), graph.IsValidRef(1));
-		TestFalse(TEXT("IsValidRef() is false when node is not in graph"), graph.IsValidRef(2));
-	}
-
 	// Count the in, out, and incident edges of a node
 	{
 		DirectedWeightedGraph<TestNode, TestEdge> graph;
