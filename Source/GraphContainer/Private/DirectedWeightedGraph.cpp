@@ -48,7 +48,15 @@ bool UDirectedWeightedGraph::HasEdge(const IEdgeInterface* Edge) const
 
 IVertexInterface* UDirectedWeightedGraph::Origin(const IEdgeInterface* Edge) const
 {
-	return graph[boost::source(edge_descriptor_map[Edge], graph)];
+	if (HasEdge(Edge))
+	{
+		return graph[boost::source(edge_descriptor_map[Edge], graph)];
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Tried to find origin vertex of an edge not in the graph. Returning nullptr."));
+		return nullptr;
+	}
 }
 
 IVertexInterface* UDirectedWeightedGraph::Destination(const IEdgeInterface* Edge) const

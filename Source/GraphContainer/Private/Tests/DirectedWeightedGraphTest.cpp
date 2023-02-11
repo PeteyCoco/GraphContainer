@@ -153,6 +153,16 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 
 	{
 		auto Graph = NewObject<UDirectedWeightedGraph>();
+		auto Edge = NewObject<UTestEdge>();
+
+		AddExpectedError(TEXT("Tried to find origin vertex of an edge not in the graph. Returning nullptr."), EAutomationExpectedErrorFlags::Exact, 1);
+		auto Origin = Graph->Origin(Edge);
+
+		TestNull(TEXT("The origin of an edge not in the graph is null."), Origin);
+	}
+
+	{
+		auto Graph = NewObject<UDirectedWeightedGraph>();
 		auto V1 = NewObject<UTestVertex>();
 		auto V2 = NewObject<UTestVertex>();
 		auto V3 = NewObject<UTestVertex>();
