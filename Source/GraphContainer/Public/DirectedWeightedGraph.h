@@ -57,6 +57,9 @@ public:
 	// Get the origin vertex of a given edge
 	IVertexInterface* Origin(const EdgePtr Edge);
 
+	// Get the destination vertex of a given edge
+	IVertexInterface* Destination(const EdgePtr Edge);
+
 private:
 	GraphType graph{};
 

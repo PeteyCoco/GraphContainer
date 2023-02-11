@@ -50,3 +50,8 @@ IVertexInterface* UDirectedWeightedGraph::Origin(const EdgePtr Edge)
 {
 	return graph[boost::source(edge_descriptor_map[Edge], graph)];
 }
+
+IVertexInterface* UDirectedWeightedGraph::Destination(const EdgePtr Edge)
+{
+	return graph[boost::target(edge_descriptor_map[Edge], graph)];
+}

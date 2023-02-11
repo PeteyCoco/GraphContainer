@@ -148,6 +148,7 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		Graph->AddEdge(Edge, Origin, Destination);
 
 		TestTrue(TEXT("The origin vertex of a directed edge matches the vertex used in its construction"), Graph->Origin(Edge) == Origin);
+		TestTrue(TEXT("The destination vertex of a directed edge matches the vertex used in its construction"), Graph->Destination(Edge) == Destination);
 	}
 #if 0
 	// Count the in, out, and incident edges of a node
