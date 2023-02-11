@@ -177,7 +177,8 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		Graph->AddEdge(E2, V2, V3);
 		Graph->AddEdge(E3, V1, V3);
 
-		TestEqual(TEXT("In-degree of V1 is 0"), Graph->InDegree(V1), 0);
+		TestEqual(TEXT("Out-degree of V3 is 0"), Graph->OutDegree(V3), 0);
+		TestEqual(TEXT("Out-degree of V1 is 2"), Graph->OutDegree(V1), 2);
 	}
 	return true;
 }

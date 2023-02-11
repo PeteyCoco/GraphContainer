@@ -73,7 +73,7 @@ IVertexInterface* UDirectedWeightedGraph::Destination(const IEdgeInterface* Edge
 	}
 }
 
-int UDirectedWeightedGraph::InDegree(const IVertexInterface* Vertex) const
+int UDirectedWeightedGraph::OutDegree(const IVertexInterface* Vertex) const
 {
-	return 0;
+	return boost::out_degree(vertex_descriptor_map[Vertex], graph);
 }

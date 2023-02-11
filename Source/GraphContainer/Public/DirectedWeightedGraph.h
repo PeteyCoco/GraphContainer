@@ -61,7 +61,7 @@ public:
 	IVertexInterface* Destination(const IEdgeInterface* Edge) const;
 
 	// Get the in degree of a given vertex
-	int InDegree(const IVertexInterface* Vertex) const;
+	int OutDegree(const IVertexInterface* Vertex) const;
 
 private:
 	GraphType graph{};
