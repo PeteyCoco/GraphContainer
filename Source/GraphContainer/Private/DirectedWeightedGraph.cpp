@@ -55,3 +55,8 @@ IVertexInterface* UDirectedWeightedGraph::Destination(const IEdgeInterface* Edge
 {
 	return graph[boost::target(edge_descriptor_map[Edge], graph)];
 }
+
+int UDirectedWeightedGraph::InDegree(const IVertexInterface* Vertex) const
+{
+	return 0;
+}

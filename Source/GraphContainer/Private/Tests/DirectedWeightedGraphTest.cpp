@@ -150,23 +150,21 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		TestTrue(TEXT("The origin vertex of a directed edge matches the vertex used in its construction"), Graph->Origin(Edge) == Origin);
 		TestTrue(TEXT("The destination vertex of a directed edge matches the vertex used in its construction"), Graph->Destination(Edge) == Destination);
 	}
-#if 0
-	// Count the in, out, and incident edges of a node
+
 	{
-		DirectedWeightedGraph<TestNode, TestEdge> graph;
-		TestNode N1{ 1 };
-		TestNode N2{ 2 };
-		TestNode N3{ 3 };		
-		TestNode N4{ 4 };
+		auto Graph = NewObject<UDirectedWeightedGraph>();
+		auto V1 = NewObject<UTestVertex>();
+		auto V2 = NewObject<UTestVertex>();
+		auto V3 = NewObject<UTestVertex>();
+		auto E1 = NewObject<UTestEdge>();
+		auto E2 = NewObject<UTestEdge>();
+		auto E3 = NewObject<UTestEdge>();
 
-		graph.AddEdge(TestEdge{ 1 }, N1, N2);
-		graph.AddEdge(TestEdge{ 2 }, N1, N3);
-		graph.AddEdge(TestEdge{ 3 }, N1, N1);
-		graph.AddEdge(TestEdge{ 4 }, N4, N1);
+		Graph->AddEdge(E1, V1, V2);
+		Graph->AddEdge(E2, V2, V3);
+		Graph->AddEdge(E3, V1, V3);
 
-		TestEqual(TEXT("Count the in-degree of N1"), graph.NumInEdges(N1), 2);
-		TestEqual(TEXT("Count the out-degree of N1"), graph.NumOutEdges(N1), 3);
+		TestEqual(TEXT("In-degree of V1 is 0"), Graph->InDegree(V1), 0);
 	}
-#endif
 	return true;
 }

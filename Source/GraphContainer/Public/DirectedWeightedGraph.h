@@ -60,6 +60,9 @@ public:
 	// Get the destination vertex of a given edge
 	IVertexInterface* Destination(const IEdgeInterface* Edge);
 
+	// Get the in degree of a given vertex
+	int InDegree(const IVertexInterface* Vertex) const;
+
 private:
 	GraphType graph{};
 
