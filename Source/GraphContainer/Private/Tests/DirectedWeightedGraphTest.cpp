@@ -19,7 +19,7 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 
 		Graph->AddVertex(Vertex);
 
-		TestEqual(TEXT("Graph must contain one node"), Graph->NumVertices(), 1);
+		TestEqual(TEXT("Graph must contain one node after adding vertex to empty graph"), Graph->NumVertices(), 1);
 	}
 
 	{
@@ -28,7 +28,7 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		AddExpectedError(TEXT("Tried to add nullptr vertex to graph. No action taken."), EAutomationExpectedErrorFlags::Exact, 1);
 		Graph->AddVertex(nullptr);
 
-		TestEqual(TEXT("Adding nullptr to graph does nothing"), Graph->NumVertices(), 0);
+		TestEqual(TEXT("NumVertices() remains 0 after adding nullptr vertex to an empty graph"), Graph->NumVertices(), 0);
 	}
 
 	{
@@ -39,8 +39,8 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 
 		Graph->AddEdge(Edge, Origin, Destination);
 
-		TestEqual(TEXT("Graph must contain two vertices"), Graph->NumVertices(), 2);
-		TestEqual(TEXT("Graph must contain one edge"), Graph->NumEdges(), 1);
+		TestEqual(TEXT("Graph must contain two vertices after adding edge to an empty graph"), Graph->NumVertices(), 2);
+		TestEqual(TEXT("Graph must contain one edge after adding edge to empty graph"), Graph->NumEdges(), 1);
 	}
 
 	{
@@ -66,7 +66,7 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		Graph->AddVertex(Vertex);
 		Graph->AddVertex(Vertex);
 
-		TestEqual(TEXT("Adding the same vertex twice does nothing"), Graph->NumVertices(), 1);
+		TestEqual(TEXT("NumVertices() remains one after adding the same vertex twice to an empty graph"), Graph->NumVertices(), 1);
 	}
 
 	{
@@ -90,7 +90,7 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		Graph->AddEdge(E1, V1, V2);
 		Graph->AddEdge(E2, V2, V1);
 
-		TestEqual(TEXT("Graph must contain two edges"), Graph->NumEdges(), 2);
+		TestEqual(TEXT("Graph must contain two edges after adding two distinct edges to empty graph"), Graph->NumEdges(), 2);
 	}
 
 	{
@@ -110,7 +110,7 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		AddExpectedError(TEXT("Tried to add a pre-existing edge to graph. No action taken."), EAutomationExpectedErrorFlags::Exact, 1);
 		Graph->AddEdge(Edge, V2, V1);
 
-		TestEqual(TEXT("Number of edges remains one after adding the same edge twice"), Graph->NumEdges(), 1);
+		TestEqual(TEXT("Number of edges remains one after adding the same edge twice to an empty graph"), Graph->NumEdges(), 1);
 	}
 
 	{
@@ -122,7 +122,7 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		AddExpectedError(TEXT("One of Edge, Origin, or Vertex are nullptr. No action taken."), EAutomationExpectedErrorFlags::Exact, 1);
 		Graph->AddEdge(nullptr, V2, nullptr);
 
-		TestEqual(TEXT("NumEdges() is zero after calling AddEdge() with nullptr argument(s)"), Graph->NumEdges(), 0);
+		TestEqual(TEXT("NumEdges() is zero after calling AddEdge() with nullptr argument(s) on an empty graph"), Graph->NumEdges(), 0);
 	}
 
 	{
@@ -136,7 +136,7 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 		Graph->AddEdge(E1, V1, V2);
 		Graph->AddEdge(E2, V2, V3);
 
-		TestEqual(TEXT("Graph of two coincident edges has three verrtices"), Graph->NumVertices(), 3);
+		TestEqual(TEXT("Graph of two coincident edges has three vertices"), Graph->NumVertices(), 3);
 	}
 
 #if 0
