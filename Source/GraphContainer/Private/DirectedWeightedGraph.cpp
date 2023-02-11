@@ -3,7 +3,7 @@
 
 #include "DirectedWeightedGraph.h"
 
-void UDirectedWeightedGraph::AddVertex(const VertexPtr Vertex)
+void UDirectedWeightedGraph::AddVertex(const IVertexInterface* Vertex)
 {
 	if (!Vertex)
 	{
@@ -12,12 +12,12 @@ void UDirectedWeightedGraph::AddVertex(const VertexPtr Vertex)
 	}
 	else if (!HasVertex(Vertex))
 	{
-		const auto vd = boost::add_vertex(Vertex, graph);
-		vertex_descriptor_map.Add(Vertex, vd);
+		const auto vd = boost::add_vertex(const_cast<VertexPtr>(Vertex), graph);
+		vertex_descriptor_map.Add(const_cast<VertexPtr>(Vertex), vd);
 	}
 }
 
-void UDirectedWeightedGraph::AddEdge(const EdgePtr Edge, const VertexPtr Origin, const VertexPtr Destination)
+void UDirectedWeightedGraph::AddEdge(const IEdgeInterface* Edge, const IVertexInterface* Origin, const IVertexInterface* Destination)
 {
 	if (!Edge || !Origin || !Destination)
 	{
@@ -28,7 +28,7 @@ void UDirectedWeightedGraph::AddEdge(const EdgePtr Edge, const VertexPtr Origin,
 		AddVertex(Origin);
 		AddVertex(Destination);
 		const auto aer = boost::add_edge(vertex_descriptor_map[Origin], vertex_descriptor_map[Destination], graph);
-		edge_descriptor_map.Add(Edge, aer.first);
+		edge_descriptor_map.Add(const_cast<EdgePtr>(Edge), aer.first);
 	}
 	else
 	{
@@ -36,22 +36,22 @@ void UDirectedWeightedGraph::AddEdge(const EdgePtr Edge, const VertexPtr Origin,
 	}
 }
 
-bool UDirectedWeightedGraph::HasVertex(const VertexPtr Vertex)
+bool UDirectedWeightedGraph::HasVertex(const IVertexInterface* Vertex)
 {
 	return vertex_descriptor_map.Contains(Vertex);
 }
 
-bool UDirectedWeightedGraph::HasEdge(const EdgePtr Edge)
+bool UDirectedWeightedGraph::HasEdge(const IEdgeInterface* Edge)
 {
 	return edge_descriptor_map.Contains(Edge);
 }
 
-IVertexInterface* UDirectedWeightedGraph::Origin(const EdgePtr Edge)
+IVertexInterface* UDirectedWeightedGraph::Origin(const IEdgeInterface* Edge)
 {
 	return graph[boost::source(edge_descriptor_map[Edge], graph)];
 }
 
-IVertexInterface* UDirectedWeightedGraph::Destination(const EdgePtr Edge)
+IVertexInterface* UDirectedWeightedGraph::Destination(const IEdgeInterface* Edge)
 {
 	return graph[boost::target(edge_descriptor_map[Edge], graph)];
 }

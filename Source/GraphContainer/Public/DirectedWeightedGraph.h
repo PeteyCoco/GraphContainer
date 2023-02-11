@@ -43,28 +43,28 @@ public:
 	}
 
 	// Add vertex to the graph
-	void AddVertex(const VertexPtr Vertex);
+	void AddVertex(const IVertexInterface* Vertex);
 
 	// Add Edge to the graph
-	void AddEdge(const EdgePtr Edge, const VertexPtr Origin, const VertexPtr Destination);
+	void AddEdge(const IEdgeInterface* Edge, const IVertexInterface* Origin, const IVertexInterface* Destination);
 
 	// Check whether the graph contains the given vertex
-	bool HasVertex(const VertexPtr Vertex);
+	bool HasVertex(const IVertexInterface* Vertex);
 
 	// Check whether the graph contains the given edge
-	bool HasEdge(const EdgePtr Edge);
+	bool HasEdge(const IEdgeInterface* Edge);
 
 	// Get the origin vertex of a given edge
-	IVertexInterface* Origin(const EdgePtr Edge);
+	IVertexInterface* Origin(const IEdgeInterface* Edge);
 
 	// Get the destination vertex of a given edge
-	IVertexInterface* Destination(const EdgePtr Edge);
+	IVertexInterface* Destination(const IEdgeInterface* Edge);
 
 private:
 	GraphType graph{};
 
-	TMap<VertexPtr, VertexDescriptor> vertex_descriptor_map;
+	TMap<IVertexInterface*, VertexDescriptor> vertex_descriptor_map;
 
-	TMap<EdgePtr, EdgeDescriptor> edge_descriptor_map;
+	TMap<IEdgeInterface*, EdgeDescriptor> edge_descriptor_map;
 
 };
