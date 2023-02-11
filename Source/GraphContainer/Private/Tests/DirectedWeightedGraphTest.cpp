@@ -157,8 +157,11 @@ bool FDirectedWeightedGraph::RunTest(FString const& Parameters) {
 
 		AddExpectedError(TEXT("Tried to find origin vertex of an edge not in the graph. Returning nullptr."), EAutomationExpectedErrorFlags::Exact, 1);
 		auto Origin = Graph->Origin(Edge);
+		AddExpectedError(TEXT("Tried to find destination vertex of an edge not in the graph. Returning nullptr."), EAutomationExpectedErrorFlags::Exact, 1);
+		auto Destination = Graph->Destination(Edge);
 
-		TestNull(TEXT("The origin of an edge not in the graph is null."), Origin);
+		TestNull(TEXT("The origin of an edge not in the graph is nullptr."), Origin);
+		TestNull(TEXT("The destination of an edge not in the graph is nullptr."), Destination);
 	}
 
 	{

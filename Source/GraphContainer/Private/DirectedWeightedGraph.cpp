@@ -61,7 +61,16 @@ IVertexInterface* UDirectedWeightedGraph::Origin(const IEdgeInterface* Edge) con
 
 IVertexInterface* UDirectedWeightedGraph::Destination(const IEdgeInterface* Edge) const
 {
-	return graph[boost::target(edge_descriptor_map[Edge], graph)];
+	IVertexInterface* Destination = nullptr;
+	if (HasEdge(Edge))
+	{
+		return graph[boost::target(edge_descriptor_map[Edge], graph)];
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Tried to find destination vertex of an edge not in the graph. Returning nullptr."))
+		return nullptr;
+	}
 }
 
 int UDirectedWeightedGraph::InDegree(const IVertexInterface* Vertex) const
