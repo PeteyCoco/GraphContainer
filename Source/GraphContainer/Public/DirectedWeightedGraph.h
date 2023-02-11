@@ -49,16 +49,16 @@ public:
 	void AddEdge(const IEdgeInterface* Edge, const IVertexInterface* Origin, const IVertexInterface* Destination);
 
 	// Check whether the graph contains the given vertex
-	bool HasVertex(const IVertexInterface* Vertex);
+	bool HasVertex(const IVertexInterface* Vertex) const;
 
 	// Check whether the graph contains the given edge
-	bool HasEdge(const IEdgeInterface* Edge);
+	bool HasEdge(const IEdgeInterface* Edge) const;
 
 	// Get the origin vertex of a given edge
-	IVertexInterface* Origin(const IEdgeInterface* Edge);
+	IVertexInterface* Origin(const IEdgeInterface* Edge) const;
 
 	// Get the destination vertex of a given edge
-	IVertexInterface* Destination(const IEdgeInterface* Edge);
+	IVertexInterface* Destination(const IEdgeInterface* Edge) const;
 
 	// Get the in degree of a given vertex
 	int InDegree(const IVertexInterface* Vertex) const;

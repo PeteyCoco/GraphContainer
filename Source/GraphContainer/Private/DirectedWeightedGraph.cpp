@@ -36,22 +36,22 @@ void UDirectedWeightedGraph::AddEdge(const IEdgeInterface* Edge, const IVertexIn
 	}
 }
 
-bool UDirectedWeightedGraph::HasVertex(const IVertexInterface* Vertex)
+bool UDirectedWeightedGraph::HasVertex(const IVertexInterface* Vertex) const
 {
 	return vertex_descriptor_map.Contains(Vertex);
 }
 
-bool UDirectedWeightedGraph::HasEdge(const IEdgeInterface* Edge)
+bool UDirectedWeightedGraph::HasEdge(const IEdgeInterface* Edge) const
 {
 	return edge_descriptor_map.Contains(Edge);
 }
 
-IVertexInterface* UDirectedWeightedGraph::Origin(const IEdgeInterface* Edge)
+IVertexInterface* UDirectedWeightedGraph::Origin(const IEdgeInterface* Edge) const
 {
 	return graph[boost::source(edge_descriptor_map[Edge], graph)];
 }
 
-IVertexInterface* UDirectedWeightedGraph::Destination(const IEdgeInterface* Edge)
+IVertexInterface* UDirectedWeightedGraph::Destination(const IEdgeInterface* Edge) const
 {
 	return graph[boost::target(edge_descriptor_map[Edge], graph)];
 }
